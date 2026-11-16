@@ -1,0 +1,620 @@
+/* ==========================================================================
+   JustIn-Time Design System — Premium Entertainment & Food Ecosystem
+   BookMyShow Dark Cinema Foundation (#0e0e12, #141418, #1a1a22)
+   × Swiggy Hyper-Accent Orange (#FC8019)
+   × BookMyShow Stage Crimson (#D9232E)
+   ========================================================================== */
+
+:root {
+  /* Surface Palette */
+  --bg-app: #0d0d11;
+  --bg-primary: #121217;
+  --bg-surface: #181820;
+  --bg-surface-elevated: #20202c;
+  --bg-surface-hover: #282836;
+  --bg-glass: rgba(24, 24, 32, 0.75);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.24);
+
+  /* Swiggy Brand Colors */
+  --swiggy-orange: #fc8019;
+  --swiggy-orange-hover: #ff912e;
+  --swiggy-orange-light: rgba(252, 128, 25, 0.14);
+  --swiggy-orange-glow: rgba(252, 128, 25, 0.35);
+
+  /* BookMyShow Brand Colors */
+  --bms-red: #d9232e;
+  --bms-red-hover: #f0333f;
+  --bms-red-light: rgba(217, 35, 46, 0.14);
+  --bms-red-glow: rgba(217, 35, 46, 0.35);
+
+  /* Thematic Category Accents */
+  --accent-concert: #a855f7;
+  --accent-concert-glow: rgba(168, 85, 247, 0.35);
+  --accent-comedy: #f59e0b;
+  --accent-comedy-glow: rgba(245, 158, 11, 0.35);
+  --accent-sport: #10b981;
+  --accent-sport-glow: rgba(16, 185, 129, 0.35);
+  --accent-movie: #0ea5e9;
+  --accent-movie-glow: rgba(14, 165, 233, 0.35);
+  --accent-experience: #ec4899;
+
+  /* Typography */
+  --text-primary: #ffffff;
+  --text-secondary: #9e9ea8;
+  --text-muted: #666675;
+  --text-on-accent: #ffffff;
+
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Depth Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --shadow-card-hover: 0 20px 45px -12px rgba(0, 0, 0, 0.85);
+  --shadow-glow-orange: 0 6px 24px rgba(252, 128, 25, 0.4);
+  --shadow-glow-bms: 0 6px 24px rgba(217, 35, 46, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Ambient Background Lighting Mesh ── */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--bg-app);
+  background-image:
+    /* Top-left Swiggy warmth */
+    radial-gradient(ellipse 700px 450px at 12% -8%, rgba(252, 128, 25, 0.10), transparent 65%),
+    /* Top-right BookMyShow energy */
+    radial-gradient(ellipse 650px 450px at 88% -8%, rgba(217, 35, 46, 0.08), transparent 65%),
+    /* Center-bottom subtle violet depth */
+    radial-gradient(ellipse 900px 600px at 50% 40%, rgba(30, 20, 45, 0.35), transparent 75%);
+  background-attachment: fixed;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 36px 24px 90px 24px;
+}
+
+/* ── Typography Enhancements ── */
+.gradient-text-orange {
+  background: linear-gradient(135deg, #ffffff 30%, var(--swiggy-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-bms {
+  background: linear-gradient(135deg, #ffffff 30%, #ff5c67 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Pill Badges ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.badge-concert {
+  background: rgba(168, 85, 247, 0.14);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
+}
+
+.badge-comedy {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);
+}
+
+.badge-sport {
+  background: rgba(16, 185, 129, 0.14);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+
+.badge-movie {
+  background: rgba(14, 165, 233, 0.14);
+  color: #7dd3fc;
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.15);
+}
+
+.badge-other {
+  background: rgba(236, 72, 153, 0.14);
+  color: #f9a8d4;
+  border: 1px solid rgba(236, 72, 153, 0.35);
+}
+
+.badge-orange {
+  background: var(--swiggy-orange-light);
+  color: var(--swiggy-orange);
+  border: 1px solid rgba(252, 128, 25, 0.35);
+}
+
+.badge-red {
+  background: var(--bms-red-light);
+  color: #ff6b75;
+  border: 1px solid rgba(217, 35, 46, 0.35);
+}
+
+.badge-subtle {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ── Buttons with Depth & Micro-interactions ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  transform: scale(0.97) !important;
+}
+
+/* Primary Swiggy High-Intent CTA */
+.btn-primary {
+  background: linear-gradient(135deg, #fc8019 0%, #ff9534 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-glow-orange), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ff8c2b 0%, #ffa54d 100%);
+  box-shadow: 0 8px 30px rgba(252, 128, 25, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* BookMyShow Secondary Accent CTA */
+.btn-bms {
+  background: linear-gradient(135deg, var(--bms-red) 0%, #f0333f 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-glow-bms), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-bms:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e62833 0%, #ff4d58 100%);
+  box-shadow: 0 8px 30px rgba(217, 35, 46, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Secondary Frosted Glass Button */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Outline Muted Button */
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-outline:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Cards & Elevation ── */
+.card {
+  background: linear-gradient(180deg, #1b1b23 0%, #141419 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.012);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow-card-hover), 0 0 30px rgba(252, 128, 25, 0.12);
+}
+
+/* ── Ticket Stub Motif (BookMyShow Style with Depth) ── */
+.ticket-stub {
+  background: linear-gradient(145deg, #22222a 0%, #17171e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 25px rgba(217, 35, 46, 0.15);
+}
+
+.ticket-notch-left, .ticket-notch-right {
+  position: absolute;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  background-color: var(--bg-app);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+.ticket-notch-left {
+  left: -13px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ticket-notch-right {
+  right: -13px;
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.ticket-divider-line {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  right: 16px;
+  border-top: 2px dashed rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%);
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lightningGlow {
+  0%, 100% {
+    box-shadow: 0 2px 12px rgba(252, 128, 25, 0.4), 0 0 0 0 rgba(252, 128, 25, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 22px rgba(252, 128, 25, 0.75), 0 0 0 6px rgba(252, 128, 25, 0.1);
+  }
+}
+
+@keyframes pulseBorder {
+  0%, 100% { border-color: rgba(252, 128, 25, 0.4); }
+  50% { border-color: rgba(252, 128, 25, 0.9); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.lightning-pulse {
+  animation: lightningGlow 2.5s infinite ease-in-out;
+}
+
+.pulse-glow {
+  animation: pulseBorder 2s infinite ease-in-out;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Seat Map & Stage Lighting ── */
+.stage-curved-screen {
+  position: relative;
+  max-width: 520px;
+  height: 48px;
+  margin: 0 auto 32px auto;
+  overflow: hidden;
+}
+
+.stage-arc {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 120px;
+  border-top: 4px solid var(--swiggy-orange);
+  border-radius: 50% 50% 0 0;
+  box-shadow:
+    0 -4px 20px rgba(252, 128, 25, 0.7),
+    0 -12px 40px rgba(252, 128, 25, 0.35),
+    inset 0 4px 15px rgba(252, 128, 25, 0.25);
+}
+
+.stage-light-wash {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 90px;
+  background: radial-gradient(ellipse at top, rgba(252, 128, 25, 0.18) 0%, rgba(217, 35, 46, 0.08) 50%, transparent 80%);
+  pointer-events: none;
+}
+
+.seat-item {
+  width: 34px;
+  height: 32px;
+  border-radius: 7px 7px 5px 5px;
+  font-size: 0.73rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  border: 1px solid var(--border-medium);
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+  background: linear-gradient(180deg, #282834 0%, #1c1c24 100%);
+  color: var(--text-secondary);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.seat-item:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.seat-item.selected {
+  background: linear-gradient(135deg, #fc8019 0%, #ff9c3a 100%);
+  color: #000000;
+  border-color: #fc8019;
+  border-top-color: #ffc485;
+  box-shadow: 0 0 16px rgba(252, 128, 25, 0.8), 0 2px 6px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px) scale(1.12);
+  z-index: 2;
+}
+
+.seat-item.occupied {
+  background: #19191e;
+  border-color: rgba(255, 255, 255, 0.04);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: #444450;
+  cursor: not-allowed;
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+/* ── Metric Progress Bar Glow ── */
+.progress-glow-orange {
+  background: linear-gradient(90deg, #fc8019 0%, #ff9d3b 100%);
+  box-shadow: 0 0 10px rgba(252, 128, 25, 0.5);
+}
+
+.progress-glow-green {
+  background: linear-gradient(90deg, #10b981 0%, #34d399 100%);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.progress-glow-purple {
+  background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+/* ── Screen header ── */
+.screen-header {
+  margin-bottom: 34px;
+}
+
+.screen-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.2;
+}
+
+.screen-subtitle {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 780px;
+}
+
+/* ── Responsive Grid ── */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 26px;
+}
+
+@media (max-width: 768px) {
+  .screen-title {
+    font-size: 1.75rem;
+  }
+  .grid-cards {
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    padding: 20px 16px 60px 16px;
+  }
+}
+
+/* ── BookMyShow Replica Theme Utilities ── */
+.bms-seat-box {
+  width: 28px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+.bms-seat-box.available {
+  background: #ffffff;
+  border: 1px solid #22c55e;
+  color: #1f2937;
+}
+.bms-seat-box.available:hover {
+  background: #22c55e;
+  color: #ffffff;
+}
+.bms-seat-box.bestseller {
+  background: #ffffff;
+  border: 1.5px solid #eab308;
+  color: #1f2937;
+}
+.bms-seat-box.bestseller:hover {
+  background: #eab308;
+  color: #ffffff;
+}
+.bms-seat-box.selected {
+  background: #22c55e !important;
+  border: 1px solid #22c55e !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.4);
+}
+.bms-seat-box.sold {
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+.bms-seat-box.recliner {
+  width: 36px;
+  height: 26px;
+  border-radius: 6px;
+}
+
+/* ── Leaflet Map Overrides ── */
+.leaflet-container {
+  font-family: var(--font-main);
+}
+.leaflet-popup-content-wrapper {
+  background: #1a1a28;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+}
+.leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+  min-width: 220px;
+}
+.leaflet-popup-tip { background: #1a1a28 !important; }
+.leaflet-popup-close-button {
+  color: #aaa !important;
+  font-size: 18px !important;
+  padding: 6px 10px !important;
+  z-index: 1;
+}
+
+/* ── Google progress bar keyframe ── */
+@keyframes google-load {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ── Live location pulse ring ── */
+@keyframes location-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* ── Map place card sidebar ── */
+.map-place-card {
+  background: rgba(26,26,40,0.9);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.map-place-card:hover {
+  background: rgba(36,36,56,0.95);
+  border-color: rgba(252,128,25,0.4);
+  transform: translateX(2px);
+}
+.map-place-card.active {
+  border-color: var(--swiggy-orange);
+  background: rgba(252,128,25,0.10);
+}
+
+

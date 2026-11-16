@@ -1,0 +1,9 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+pydantic==2.14.0b2
+pydantic-core==2.49.0
+python-dateutil==2.9.0
+google-genai>=2.25.0
+httpx>=0.27.0          # Async HTTP client for Ticketmaster / SerpApi calls
+apscheduler>=3.10.4    # Background periodic event sync scheduler
